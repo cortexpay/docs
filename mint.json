@@ -37,20 +37,20 @@
     {
       "group": "Transactions",
       "pages": [
-        "api-reference/endpoint/pix/create",
-        "api-reference/endpoint/pix/get"
+        "api-reference/endpoint/PIX/create",
+        "api-reference/endpoint/PIX/get-qr_code"
       ]
     },
     {
       "group": "Withdrawals",
       "pages": [
-        "api-reference/endpoint/payout/pix/create"
+        "api-reference/endpoint/PAYOUT/pix/create"
       ]
     },
     {
       "group": "Refunds",
       "pages": [
-        "api-reference/endpoint/refunds/pix/create"
+        "api-reference/endpoint/REFUNDS/pix/create"
       ]
     }
   ],
