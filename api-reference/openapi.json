@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.cortexpay.com.br/api:gdvuCAXd"
     }
   ],
   "security": [
@@ -19,12 +19,12 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/pix": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "Get a PIX deposit.",
         "parameters": [
           {
-            "name": "limit",
+            "transaction_id": "12345678942",
             "in": "query",
             "description": "The maximum number of results to return",
             "schema": {
