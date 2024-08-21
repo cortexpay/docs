@@ -1,33 +1,19 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: Introdução
+description: 'Bem-vindo à documentação da API CotexPay. Aqui você encontrará todas as informações necessárias para integrar com nossa plataforma.'
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+## Começando
 
-## Welcome
+Para começar a utilizar a nossa API, é essencial entender como realizar a autenticação e fazer chamadas aos endpoints disponíveis.
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+### Autenticação
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+Todas as requisições à API devem ser autenticadas utilizando o seguinte sua api-key no Body da requisição HTTP:
+```Params: api-key <YOUR_API_TOKEN>```
 
-## Authentication
+Substitua `<YOUR_API_TOKEN>` pelo seu token de acesso pessoal.
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+### Fazendo chamadas à API
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+Para fazer uma chamada à API, você precisará usar o método HTTP apropriado para o endpoint desejado. A maioria dos endpoints da API CortexPay suporta os métodos `GET`, `POST`, `PUT`, e `DELETE`.
