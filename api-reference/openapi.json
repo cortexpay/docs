@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Quadrify Docs",
+  "name": "CortexPay",
   "logo": {
     "dark": "/logo/light.png",
     "light": "/logo/dark.png"
@@ -18,12 +18,12 @@
   "topbarLinks": [
     {
       "name": "Suporte",
-      "url": "mailto:contato@quadrify.io"
+      "url": "mailto:dev@cortexpay.com.br"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://app.quadrify.io"
+    "url": "https://app.cortexpay.com.br"
   },
   "anchors": [
   ],
@@ -35,29 +35,10 @@
       ]
     },
     {
-      "group": "Sales",
+      "group": "Pix",
       "pages": [
-        "api-reference/endpoint/sales/create",
-        "api-reference/endpoint/sales/get"
-      ]
-    },
-    {
-      "group": "Contacts",
-      "pages": [
-        "api-reference/endpoint/contacts/get"
-      ]
-    },
-    {
-      "group": "Products",
-      "pages": [
-        "api-reference/endpoint/products/get"
-      ]
-    },
-    {
-      "group": "Ad Campaigns",
-      "pages": [
-        "api-reference/endpoint/ad-campaigns/get",
-        "api-reference/endpoint/ad-campaigns/get-insights"
+        "api-reference/endpoint/pix/create",
+        "api-reference/endpoint/pix/get"
       ]
     }
   ],
