@@ -24,25 +24,22 @@
         "description": "Get a PIX QR_CODE.",
         "parameters": [
           {
-            "transaction_id": "12345678942",
+            "name": "transaction_id",  // Corrigido para incluir o nome do parâmetro
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "The ID of the transaction",
+            "required": true,  // Adicionado para indicar que o parâmetro é obrigatório
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "QR Code generated successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
+                  "$ref": "#/components/schemas/Plant"
                 }
               }
             }
@@ -60,9 +57,9 @@
         }
       },
       "post": {
-        "description": "Create a new depoist",
+        "description": "Create a new deposit via PIX",
         "requestBody": {
-          "description": "Pix add",
+          "description": "Details of the new PIX deposit",
           "content": {
             "application/json": {
               "schema": {
@@ -73,8 +70,8 @@
           "required": true
         },
         "responses": {
-          "200": {
-            "description": "plant response",
+          "201": {  // Alterado de 200 para 201, que é o status code mais adequado para criação
+            "description": "PIX deposit created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -84,7 +81,7 @@
             }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
@@ -98,26 +95,25 @@
     },
     "/pix/{id}": {
       "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+        "description": "Deletes a single PIX deposit based on the ID supplied",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "ID of the PIX deposit to delete",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"  // Alterado de integer para string para refletir melhor um ID de transação
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Plant deleted",
+            "description": "PIX deposit deleted successfully",
             "content": {}
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
@@ -149,32 +145,72 @@
         }
       },
       "NewPix": {
-            "required": [
-                "api_key",
-                "transaction_id",
-                "currency",
-                "name",
-                "document_type",
-                "document_number",
-                "phone_number",
-                "email",
-                "external_id",
-                "amount",
-                "phone_prefix",
-                "first_deposit"
-            ],
-            "type": "object",
-            "properties": {
-              "api_key": {
-                "description": "Sua chave de API",
-                "type": "string"
-              },
-              "transaction_id": {
-                "description": "Id da transação",
-                "type": "string"
-              }
-            }
+        "required": [
+          "api_key",
+          "transaction_id",
+          "currency",
+          "name",
+          "document_type",
+          "document_number",
+          "phone_number",
+          "email",
+          "external_id",
+          "amount",
+          "phone_prefix",
+          "first_deposit"
+        ],
+        "type": "object",
+        "properties": {
+          "api_key": {
+            "description": "Sua chave de API",
+            "type": "string"
+          },
+          "transaction_id": {
+            "description": "ID da transação",
+            "type": "string"
+          },
+          "currency": {
+            "description": "Moeda da transação",
+            "type": "string"
+          },
+          "name": {
+            "description": "Nome do pagador",
+            "type": "string"
+          },
+          "document_type": {
+            "description": "Tipo de documento (CPF/CNPJ)",
+            "type": "string"
+          },
+          "document_number": {
+            "description": "Número do documento",
+            "type": "string"
+          },
+          "phone_number": {
+            "description": "Número de telefone",
+            "type": "string"
+          },
+          "email": {
+            "description": "Email do pagador",
+            "type": "string"
+          },
+          "external_id": {
+            "description": "ID externo para referência",
+            "type": "string"
+          },
+          "amount": {
+            "description": "Valor da transação",
+            "type": "number",
+            "format": "float"
+          },
+          "phone_prefix": {
+            "description": "Prefixo do telefone",
+            "type": "string"
+          },
+          "first_deposit": {
+            "description": "Indica se é o primeiro depósito",
+            "type": "boolean"
           }
+        }
       },
       "Error": {
         "required": [
@@ -200,3 +236,4 @@
       }
     }
   }
+}
