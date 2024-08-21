@@ -21,7 +21,7 @@
   "paths": {
     "/pix": {
       "get": {
-        "description": "Get a PIX deposit.",
+        "description": "Get a PIX QR_CODE.",
         "parameters": [
           {
             "transaction_id": "12345678942",
@@ -60,13 +60,13 @@
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "Create a new depoist",
         "requestBody": {
-          "description": "Plant to add to the store",
+          "description": "Pix add",
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewPlant"
+                "$ref": "#/components/schemas/NewPix"
               }
             }
           },
@@ -148,25 +148,33 @@
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
+      "NewPix": {
             "required": [
-              "id"
+                "api_key",
+                "transaction_id",
+                "currency",
+                "name",
+                "document_type",
+                "document_number",
+                "phone_number",
+                "email",
+                "external_id",
+                "amount",
+                "phone_prefix",
+                "first_deposit"
             ],
             "type": "object",
             "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+              "api_key": {
+                "description": "Sua chave de API",
+                "type": "string"
+              },
+              "transaction_id": {
+                "description": "Id da transação",
+                "type": "string"
               }
             }
           }
-        ]
       },
       "Error": {
         "required": [
@@ -192,4 +200,3 @@
       }
     }
   }
-}
